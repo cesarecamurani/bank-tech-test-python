@@ -15,6 +15,11 @@ class TestBankAccount(unittest.TestCase):
         self.bank_account.deposit(500)
         assert self.bank_account.balance == 500
 
+    def test_withdraw_takes_money_from_the_account(self):
+        self.bank_account.deposit(1000)
+        self.bank_account.withdraw(500)
+        assert self.bank_account.balance == 500
+
 
 if __name__ == '__main__':
     unittest.main()
