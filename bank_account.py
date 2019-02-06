@@ -9,6 +9,9 @@ class BankAccount:
         self.balance += amount
 
     def withdraw(self, amount):
+        self.__noCredit(amount)
+        self.balance -= amount
+
+    def __noCredit(self, amount):
         if amount > self.balance:
             raise Exception('Not enough credit!')
-        self.balance -= amount
