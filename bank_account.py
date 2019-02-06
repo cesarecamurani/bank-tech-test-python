@@ -9,8 +9,9 @@ class BankAccount:
         transaction.credit()
         self.balance += amount
 
-    def withdraw(self, amount):
+    def withdraw(self, transaction, amount):
         self.__noCredit(amount)
+        transaction.debit()
         self.balance -= amount
 
     def __noCredit(self, amount):

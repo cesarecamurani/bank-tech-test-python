@@ -18,12 +18,13 @@ class TestBankAccount(unittest.TestCase):
 
     def test_withdraw_takes_money_from_the_account(self):
         self.bank_account.deposit(self.transaction, 1000)
-        self.bank_account.withdraw(500)
+        self.bank_account.withdraw(self.transaction, 500)
         assert self.bank_account.balance == 500
+        self.transaction.debit.assert_called_with()
 
     def test_trying_to_withdraw_with_no_credit_raises_error(self):
         with self.assertRaisesRegexp(Exception, 'Not enough credit!'):
-            self.bank_account.withdraw(1000)
+            self.bank_account.withdraw(self.transaction, 1000)
 
 
 
