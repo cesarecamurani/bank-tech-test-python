@@ -5,7 +5,8 @@ class BankAccount:
     def __init__(self):
         self.balance = 0
 
-    def deposit(self, amount):
+    def deposit(self, transaction, amount):
+        transaction.credit()
         self.balance += amount
 
     def withdraw(self, amount):

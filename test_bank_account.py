@@ -12,11 +12,12 @@ class TestBankAccount(unittest.TestCase):
         assert self.bank_account.balance == 0
 
     def test_deposit_adds_money_into_the_account(self):
-        self.bank_account.deposit(500)
+        self.bank_account.deposit(self.transaction, 500)
         assert self.bank_account.balance == 500
+        self.transaction.credit.assert_called_with()
 
     def test_withdraw_takes_money_from_the_account(self):
-        self.bank_account.deposit(1000)
+        self.bank_account.deposit(self.transaction, 1000)
         self.bank_account.withdraw(500)
         assert self.bank_account.balance == 500
 
