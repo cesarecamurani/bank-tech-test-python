@@ -20,6 +20,11 @@ class TestBankAccount(unittest.TestCase):
         self.bank_account.withdraw(500)
         assert self.bank_account.balance == 500
 
+    def test_trying_to_withdraw_with_no_credit_raises_error(self):
+        with self.assertRaisesRegexp(Exception, 'Not enough credit!'):
+            self.bank_account.withdraw(1000)
+
+
 
 if __name__ == '__main__':
     unittest.main()
