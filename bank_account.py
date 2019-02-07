@@ -6,13 +6,13 @@ class BankAccount:
         self.balance = 0
 
     def deposit(self, transaction, amount):
-        transaction.credit(amount, self.balance)
         self.balance += amount
+        transaction.credit(amount, self.balance)
 
     def withdraw(self, transaction, amount):
         self.__noCredit(amount)
-        transaction.debit(amount, self.balance)
         self.balance -= amount
+        transaction.debit(amount, self.balance)
 
     def __noCredit(self, amount):
         if amount > self.balance:
